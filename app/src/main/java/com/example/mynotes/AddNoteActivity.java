@@ -32,6 +32,8 @@ public class AddNoteActivity extends AppCompatActivity {
                 String title = titleInput.getText().toString();
                 String description = descriptionInput.getText().toString();
 
+                    if(!TextUtils.isEmpty(title) && !TextUtils.isEmpty(description))
+                {
                     Note n = new Note();
                     realm.beginTransaction();
                     n.setId(getNextKey());
@@ -44,6 +46,10 @@ public class AddNoteActivity extends AppCompatActivity {
                     Intent an = new Intent(AddNoteActivity.this, MainActivity.class);
                     an.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(an);
+                }
+                else{
+                    Toast.makeText(AddNoteActivity.this,"Both Fields Required",Toast.LENGTH_SHORT).show();
+                }
                 }
 
             public int getNextKey() {
