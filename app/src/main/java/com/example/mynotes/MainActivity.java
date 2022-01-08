@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(mintent);
             }
         });
+        Realm.init(getApplicationContext());
         Realm realm = Realm.getDefaultInstance();
 
         RealmResults<Note> noteslist = realm.where(Note.class).findAll();
